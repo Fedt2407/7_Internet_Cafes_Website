@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Cafe&Wifi API</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="logo">
+          <img
+            src="{{ url_for('static', filename='logo.png') }}"
+            class="logo"
+            alt="Coffe logo"
+          />
+        </div>
+        <ul class="nav-links">
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li><a href="/add">Add Cafe</a></li>
+        </ul>
+      </nav>
+    </header>
+    <h1>Welcome To The Home of Cafe Free Wifi</h1>
+    <div class="container">
+      {% for cafe in cafes %}
+      <div class="cafe">
+        <img
+          src="{{ cafe.img_url }}"
+          alt="{{ cafe.name }}"
+          class="cafe-image"
+        />
+        <div class="cafe-info">
+          <h2>{{ cafe.name }}</h2>
+          <p>Location: {{ cafe.location }}</p>
+          <p>Seats: {{ cafe.seats }}</p>
+          <p>Has Toilet: {{ cafe.has_toilet }}</p>
+          <p>Has WiFi: {{ cafe.has_wifi }}</p>
+          <p>Can Take Calls: {{ cafe.can_take_calls }}</p>
+          <div class="coffee-price">
+            <p style="margin-right: 10px">
+              Coffee Price: {{ cafe.coffee_price }}
+            </p>
+            <a href="{{ url_for('update_price', cafe_id=cafe.id)}}">Update</a>
+          </div>
+          <p>
+            Map URL: <a href="{{ cafe.map_url }}" target="_blank">Open Map</a>
+          </p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </body>
+</html>

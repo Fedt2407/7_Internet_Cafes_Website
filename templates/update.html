@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Cafe&Wifi API</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="logo">
+          <img
+            src="{{ url_for('static', filename='logo.png') }}"
+            class="logo"
+            alt="Coffee logo"
+          />
+        </div>
+        <ul class="nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/add">Add Cafe</a></li>
+        </ul>
+      </nav>
+    </header>
+    <h1>Update Coffee Price</h1>
+    <div class="add-container">
+      <!-- Form to update café price -->
+      <form
+        action="{{ url_for('update_price', cafe_id=cafe.id) }}"
+        method="POST"
+      >
+        <input type="hidden" name="_method" value="PATCH" />
+        <label for="coffee_price">Updated Coffee Price:</label>
+        <input
+          type="text"
+          id="coffee_price"
+          name="coffee_price"
+          value="{{ cafe.coffee_price }}"
+          required
+        /><br />
+        <input type="submit" value="Update Price" />
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Cafe&Wifi API</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="logo">
+          <img
+            src="{{ url_for('static', filename='logo.png') }}"
+            class="logo"
+            alt="Coffe logo"
+          />
+        </div>
+        <ul class="nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/add">Add Cafe</a></li>
+        </ul>
+      </nav>
+    </header>
+    <h1>Add New Café</h1>
+    </div>
+    <div class="add-container">
+        
+        <!-- Form to add new café -->
+        <form action="{{ url_for('post_new_cafe') }}" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br>
+            
+            <label for="map_url">Map URL:</label>
+            <input type="text" id="map_url" name="map_url" required><br>
+            
+            <label for="img_url">Image URL:</label>
+            <input type="text" id="img_url" name="img_url" required><br>
+            
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="loc" required><br>
+            <label for="seats">Seats:</label>
+            <input type="text" id="seats" name="seats" required><br>
+
+            <label for="coffee_price">Coffee Price:</label>
+            <input type="text" id="coffee_price" name="coffee_price"><br>
+            
+            <div class="checkboxes">
+                <label for="sockets">Has Sockets:</label>
+                <input type="checkbox" id="sockets" name="sockets"><br>
+            </div>
+            <div class="checkboxes">
+                <label for="toilet">Has Toilet:</label>
+                <input type="checkbox" id="toilet" name="toilet"><br>
+            </div>
+            <div class="checkboxes">
+                <label for="wifi">Has WiFi:</label>
+                <input type="checkbox" id="wifi" name="wifi"><br>
+            </div>
+            <div class="checkboxes">
+                <label for="calls">Can Take Calls:</label>
+                <input type="checkbox" id="calls" name="calls"><br>
+            </div><br>
+            
+            <input type="submit" value="Add Café">
+        </form>
+    </div>
+  </body>
+</html>
